@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masood Bhat Portfolio</title>
+<meta name="description" content="Masood Bhat — Associate Team Lead building .NET and Azure systems and leading AI-assisted engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: single column, 1120px max; hero = name + thesis left, "now" panel right; metrics band; STAR projects as 4-cell grids; contact closes on saffron. */
+/* Dark-first. Accent = Pampore saffron. */
+:root{
+  --bg:#0E131D; --surface:#151C2A; --surface-2:#1B2436;
+  --fg:#E8EBF1; --muted:#9BA4B6; --line:#26314A;
+  --accent:#F2A541; --accent-soft:rgba(242,165,65,.12); --on-accent:#1B1205;
+  --ok:#5CC8A1;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  --s-xs:.8125rem; --s-sm:.9375rem; --s-md:1.0625rem; --s-lg:1.375rem; --s-xl:2rem; --s-2xl:clamp(2.6rem,7vw,4.75rem);
+  --r:14px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F4F5F8; --surface:#FFFFFF; --surface-2:#EEF0F5;
+    --fg:#131926; --muted:#556073; --line:#DCE0E8;
+    --accent:#A3570F; --accent-soft:rgba(163,87,15,.09); --on-accent:#FFFFFF;
+    --ok:#127A57; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F4F5F8; --surface:#FFFFFF; --surface-2:#EEF0F5;
+  --fg:#131926; --muted:#556073; --line:#DCE0E8;
+  --accent:#A3570F; --accent-soft:rgba(163,87,15,.09); --on-accent:#FFFFFF;
+  --ok:#127A57; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font:400 var(--s-md)/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+p{margin:0}
+.eyebrow{font:600 var(--s-xs)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.m{font-family:var(--f-display);font-weight:800;color:var(--accent);white-space:nowrap}
+section{padding-block:clamp(56px,9vw,104px);border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:12px;margin-bottom:40px;max-width:680px}
+.sec-head h2{font-size:var(--s-xl);font-weight:700}
+.sec-head p{color:var(--muted)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font:700 1.05rem/1 var(--f-display);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{width:28px;height:28px;border-radius:8px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:800 .8rem/1 var(--f-display);font-style:normal}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:var(--s-sm);color:var(--muted)}
+.nav ul a:hover{color:var(--fg);background:var(--surface-2)}
+.nav-r{display:flex;gap:8px;align-items:center}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:18px;height:18px}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:10px;font:600 var(--s-sm)/1 var(--f-body);text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn svg{width:16px;height:16px}
+
+/* hero */
+.hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px);border-top:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
+@media (max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:var(--s-2xl);font-weight:800;letter-spacing:-.02em;margin-block:18px 22px}
+.hero h1 span{color:var(--accent)}
+.hero .lede{display:grid;gap:12px;max-width:62ch;color:var(--muted);font-size:var(--s-md)}
+.hero .lede p:first-child{color:var(--fg);font-size:var(--s-lg);line-height:1.45}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 var(--s-xs)/1 var(--f-mono);color:var(--muted);padding:7px 12px;border:1px solid var(--line);border-radius:99px}
+.status b{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 22%,transparent)}
+.now{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:16px;min-width:0}
+.now h3{font:600 var(--s-xs)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.now dl{margin:0;display:grid;gap:14px}
+.now dt{font:600 var(--s-xs)/1.2 var(--f-mono);color:var(--accent);margin-bottom:4px}
+.now dd{margin:0;font-size:var(--s-sm);line-height:1.5}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:clamp(40px,6vw,64px)}
+.metric{background:var(--bg);padding:22px 20px;display:grid;gap:6px;align-content:start}
+.metric strong{font:800 clamp(1.9rem,4vw,2.6rem)/1 var(--f-display);color:var(--fg);font-variant-numeric:tabular-nums}
+.metric strong em{font-style:normal;color:var(--accent)}
+.metric span{font-size:var(--s-sm);color:var(--muted);line-height:1.4}
+@media (max-width:760px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(28px,5vw,72px)}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr}}
+.about-copy{display:grid;gap:18px;max-width:65ch}
+.about-copy p:first-child{font-size:var(--s-lg);line-height:1.5}
+.facts{display:grid;gap:0;align-content:start;border-top:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:var(--s-sm)}
+.facts dt{color:var(--muted)} .facts dd{margin:0;text-align:right;font-weight:500}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.services{grid-template-columns:1fr}}
+.svc{border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:12px;align-content:start;background:var(--surface)}
+.svc h3{font-size:var(--s-lg);font-weight:700}
+.svc p{color:var(--muted);font-size:var(--s-sm)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:4px 0 0;padding:0}
+.tags li{font:500 .75rem/1 var(--f-mono);padding:6px 8px;border-radius:6px;background:var(--surface-2);color:var(--muted)}
+
+/* projects */
+.projects{display:grid;gap:28px}
+.proj{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.proj-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding:28px 28px 22px;border-bottom:1px solid var(--line)}
+.proj-head > div{display:grid;gap:8px;min-width:0}
+.proj-head h3{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:800}
+.proj-head .sub{color:var(--muted);font-size:var(--s-sm)}
+.proj-links{display:flex;gap:8px;flex-wrap:wrap}
+.proj-links .btn{padding:9px 13px;font-size:var(--s-xs)}
+.star{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.star > div{padding:22px 24px;display:grid;gap:10px;align-content:start;border-right:1px solid var(--line);font-size:var(--s-sm);min-width:0}
+.star > div:last-child{border-right:0;background:var(--accent-soft)}
+.star h4{margin:0;font:600 var(--s-xs)/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center}
+.star h4 b{display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--surface-2);color:var(--fg);font-weight:600}
+.star > div:last-child h4 b{background:var(--accent);color:var(--on-accent)}
+.star ul{margin:0;padding-left:18px;display:grid;gap:6px}
+@media (max-width:940px){.star{grid-template-columns:repeat(2,minmax(0,1fr))}.star > div:nth-child(2){border-right:0}.star > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:560px){.star{grid-template-columns:1fr}.star > div{border-right:0;border-bottom:1px solid var(--line)}}
+.proj-foot{padding:16px 28px;border-top:1px solid var(--line)}
+
+/* more work */
+.more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+@media (max-width:880px){.more{grid-template-columns:1fr}}
+.mini{border-top:2px solid var(--line);padding-top:16px;display:grid;gap:8px;align-content:start}
+.mini h3{font-size:1.15rem;font-weight:700}
+.mini p{color:var(--muted);font-size:var(--s-sm)}
+.repos{margin-top:48px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.repos-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;background:var(--surface);border-bottom:1px solid var(--line)}
+.repos-head span{font:600 var(--s-xs)/1 var(--f-mono);color:var(--muted)}
+.repo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;padding:16px 20px;border-bottom:1px solid var(--line);text-decoration:none}
+.repo:last-child{border-bottom:0}
+.repo:hover{background:var(--surface)}
+.repo b{font:600 var(--s-sm)/1.3 var(--f-mono);color:var(--accent)}
+.repo small{font:500 .75rem/1.3 var(--f-mono);color:var(--muted);text-align:right}
+.repo p{grid-column:1/-1;color:var(--muted);font-size:var(--s-sm)}
+
+/* experience */
+.timeline{display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.job{position:relative;padding:0 0 32px 28px;display:grid;gap:6px}
+.job::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.job.cur::before{border-color:var(--accent);background:var(--accent)}
+.job-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
+.job h3{font-size:1.15rem;font-weight:700}
+.job h3 span{color:var(--muted);font-weight:500}
+.job time{font:500 var(--s-xs)/1.6 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job p{color:var(--muted);font-size:var(--s-sm);max-width:72ch}
+
+/* writing */
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:880px){.posts{grid-template-columns:1fr}}
+.post{border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:12px;align-content:space-between;text-decoration:none;background:var(--surface)}
+.post:hover{border-color:var(--muted)}
+.post h3{font-size:1.15rem;font-weight:700;line-height:1.3}
+.post p{color:var(--muted);font-size:var(--s-sm)}
+.post .reach{font:600 var(--s-xs)/1 var(--f-mono);color:var(--accent)}
+
+/* creds */
+.creds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:760px){.creds{grid-template-columns:1fr}}
+.creds ul{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line)}
+.creds li{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:var(--s-sm)}
+.creds li span{color:var(--muted);font-family:var(--f-mono);font-size:var(--s-xs);white-space:nowrap}
+
+/* contact */
+.contact{background:var(--accent);color:var(--on-accent);border-top:0}
+.contact .eyebrow{color:var(--on-accent);opacity:.75}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;margin-block:14px 16px;letter-spacing:-.02em}
+.contact p{max-width:52ch;opacity:.85}
+.channels{display:grid;gap:10px}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-radius:12px;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.14);text-decoration:none;color:inherit;min-width:0}
+.ch:hover{background:rgba(0,0,0,.14)}
+.ch .l{display:grid;gap:2px;min-width:0}
+.ch small{font:600 .7rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.ch b{font-weight:600;overflow-wrap:anywhere}
+.ch button{font:600 var(--s-xs)/1 var(--f-mono);padding:8px 10px;border-radius:8px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;flex-shrink:0}
+footer{padding-block:28px;font:500 var(--s-xs)/1.6 var(--f-mono);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>MB</i>Masood Bhat</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#writing">Writing</a></li>
+    </ul>
+    <div class="nav-r">
+      <button class="icon-btn" id="themeToggle" aria-label="Switch colour theme" title="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn primary" href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="status"><b></b>Open to Team Lead &amp; Solutions Architect roles</span>
+          <h1>Masood Bhat.<br><span>.NET, Azure</span> &amp; AI&#8209;assisted engineering.</h1>
+          <div class="lede">
+            <p>I'm an Associate Team Lead who designs .NET and Azure systems for healthcare and commerce, and helps engineering teams ship with AI without lowering the bar on correctness.</p>
+            <p>In 8+ years I've synchronised <strong class="m">100,000+</strong> patient records across HIPAA-compliant integrations, cut server costs by <strong class="m">30%</strong>, and architected an EHR platform that reached <strong class="m">92%</strong> provider adoption.</p>
+            <p>Today I'm leading my team's adoption of Claude Code, GitHub Copilot and Codex, backed by a written policy, a 15-module curriculum and a reference application that proves the workflow.</p>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#work">See the work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <!-- TODO: replace href with your hosted CV PDF -->
+            <a class="btn" href="#" data-placeholder="cv">Download CV</a>
+            <a class="btn" href="https://github.com/masoodibraheem31" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/masruh31/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <aside class="now" aria-label="What I'm doing now">
+          <h3>Right now</h3>
+          <dl>
+            <div><dt>Role</dt><dd>Associate Team Lead, Mindfire Solutions. Promoted April 2026.</dd></div>
+            <div><dt>Leading</dt><dd>Team-wide rollout of AI-assisted development with a policy on data classification, verification and PR review.</dd></div>
+            <div><dt>Teaching</dt><dd>A 15-module engineering curriculum: context engineering, security verification, Skills, MCP, subagents.</dd></div>
+            <div><dt>Based in</dt><dd>Srinagar, Kashmir. Working remotely with teams in India and the US.</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="metrics" role="list">
+        <div class="metric" role="listitem"><strong>100K<em>+</em></strong><span>patient records synced across 3 HIPAA-compliant portals</span></div>
+        <div class="metric" role="listitem"><strong><em>−</em>30%</strong><span>server costs after re-architecting the API layer</span></div>
+        <div class="metric" role="listitem"><strong><em>+</em>50%</strong><span>improvement in application response time</span></div>
+        <div class="metric" role="listitem"><strong>92<em>%</em></strong><span>provider adoption of the Invaryant EHR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="sec-head" style="margin:0">
+        <span class="eyebrow">About</span>
+        <h2>I build systems where a wrong record matters.</h2>
+        <dl class="facts" style="margin-top:20px">
+          <div><dt>Experience</dt><dd>8+ years</dd></div>
+          <div><dt>Core stack</dt><dd>.NET 10, C#, Azure, React</dd></div>
+          <div><dt>Domains</dt><dd>Healthcare, e-commerce, audit</dd></div>
+          <div><dt>Languages</dt><dd>English, Hindi, Kashmiri</dd></div>
+        </dl>
+      </div>
+      <div class="about-copy">
+        <p>I started in 2015 in Srinagar, building ASP.NET MVC sites and writing a <code>foreach</code> loop for everything. Then I found LINQ, and it changed how I think: describe what you want, and let the code read like the intent.</p>
+        <p>Most of my career since has been in healthcare. I architected Invaryant, an HL7-based Electronic Health Record platform for a US client, and later connected three separate healthcare portals to it while keeping every flow HIPAA-compliant. That work taught me to care about the boring parts: role-based access, data contracts, audit trails, and what happens on the 100,000th record.</p>
+        <p>In 2026 I moved into leading a team, right as AI started writing a large share of our code. AI-generated code tends to look clean, and clean code is no longer proof of correct code. So I wrote our AI-assisted development policy, built a curriculum around verification, and shipped a full application with Claude Code to show the team where review agents earn their keep. They caught six real bugs that a human reviewer would have waved through.</p>
+        <p>Outside the codebase, I run a commercial ultra-high-density apple orchard in Pampore. Farming and software reward the same habit: measure first, then change one thing at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What I do</span>
+        <h2>Four things teams bring me in for</h2>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <h3>AI-assisted engineering enablement</h3>
+          <p>I set up Claude Code, Copilot and Codex so they make a team faster without making it sloppier: project instructions, custom Skills, MCP integrations, review subagents, and a usage policy people actually follow.</p>
+          <ul class="tags"><li>Claude Code</li><li>CLAUDE.md</li><li>Skills &amp; MCP</li><li>Review subagents</li><li>AI policy</li></ul>
+        </article>
+        <article class="svc">
+          <h3>.NET backend architecture</h3>
+          <p>APIs that stay readable as they grow. I use CQRS with MediatR and Vertical Slice Architecture so each feature lives in one place, and I tune the data layer for cost and latency.</p>
+          <ul class="tags"><li>.NET 10</li><li>ASP.NET Core</li><li>CQRS / MediatR</li><li>Vertical Slices</li><li>EF Core</li></ul>
+        </article>
+        <article class="svc">
+          <h3>Healthcare system integration</h3>
+          <p>HL7 data flows, role-based authentication and HIPAA-compliant synchronisation between EHRs and patient portals, built for data you can't afford to get wrong.</p>
+          <ul class="tags"><li>HL7</li><li>HIPAA</li><li>EHR</li><li>RBAC</li><li>SOC2</li></ul>
+        </article>
+        <article class="svc">
+          <h3>Azure delivery &amp; CI/CD</h3>
+          <p>From commit to production on Azure with one pipeline: App Service for APIs, Static Web Apps for the front end, Azure SQL, and GitHub Actions gluing it together.</p>
+          <ul class="tags"><li>Azure App Service</li><li>Static Web Apps</li><li>Azure SQL</li><li>GitHub Actions</li><li>Docker</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Selected work</span>
+        <h2>Three projects, told as Situation, Task, Action, Result</h2>
+      </div>
+
+      <div class="projects">
+        <!-- Project 1 -->
+        <article class="proj">
+          <div class="proj-head">
+            <div>
+              <span class="eyebrow">2026 · Mindfire Solutions · Internal reference build</span>
+              <h3>TaskFlow</h3>
+              <p class="sub">Full-stack project management platform built end-to-end with Claude Code</p>
+            </div>
+            <div class="proj-links">
+              <a class="btn" href="https://github.com/masoodibraheem31/TaskFlowProject" target="_blank" rel="noopener">Source on GitHub</a>
+              <!-- TODO: replace with live Azure Static Web Apps URL -->
+              <a class="btn" href="#" data-placeholder="demo">Live demo</a>
+            </div>
+          </div>
+          <div class="star">
+            <div><h4><b>S</b>Situation</h4><p>My team was starting to use AI coding tools daily, with no shared rules and no evidence of whether AI-written code could hold up in production.</p></div>
+            <div><h4><b>T</b>Task</h4><p>Build a realistic reference application entirely with Claude Code, and use it to show the team a safe, repeatable workflow.</p></div>
+            <div><h4><b>A</b>Action</h4><ul>
+              <li>.NET 10 Minimal APIs with MediatR, EF Core and FluentValidation; React 18, TypeScript, TanStack Router/Query</li>
+              <li>CLAUDE.md project rules, custom Skills and multi-agent review subagents</li>
+              <li>One GitHub Actions pipeline to Azure App Service, Static Web Apps and Azure SQL</li></ul></div>
+            <div><h4><b>R</b>Result</h4><ul>
+              <li>Review agents caught <strong class="m">6</strong> production-grade bugs before release, including a TOCTOU race condition and a regex vulnerability</li>
+              <li>Presented to <strong class="m">~50</strong> engineers</li>
+              <li>Became the capstone of a <strong class="m">15-module</strong> curriculum</li></ul></div>
+          </div>
+          <div class="proj-foot"><ul class="tags" style="margin:0"><li>.NET 10</li><li>MediatR</li><li>EF Core</li><li>React 18</li><li>TypeScript</li><li>Tailwind</li><li>JWT</li><li>Azure</li></ul></div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="proj">
+          <div class="proj-head">
+            <div>
+              <span class="eyebrow">2019 – 2026 · QSS Technosoft → Mindfire Solutions · US healthcare client</span>
+              <h3>Invaryant EHR &amp; portal integration</h3>
+              <p class="sub">HL7-based Electronic Health Record platform, later connected to three patient portals</p>
+            </div>
+            <div class="proj-links">
+              <!-- TODO: add a case-study link or remove (client work, likely under NDA) -->
+              <a class="btn" href="#" data-placeholder="case-study">Case study</a>
+            </div>
+          </div>
+          <div class="star">
+            <div><h4><b>S</b>Situation</h4><p>A US healthcare client needed an Electronic Health Record system, and later had three separate portals holding patient data that had to stay consistent with it.</p></div>
+            <div><h4><b>T</b>Task</h4><p>Architect the EHR, then integrate all three portals with it under HIPAA, without losing or corrupting records.</p></div>
+            <div><h4><b>A</b>Action</h4><ul>
+              <li>ASP.NET Core Web API and React with role-based authentication</li>
+              <li>HL7-based data flows between EHR and portals</li>
+              <li>Azure AI Cognitive Services, Bot Service and LUIS for assisted workflows</li></ul></div>
+            <div><h4><b>R</b>Result</h4><ul>
+              <li><strong class="m">92%</strong> adoption among healthcare providers</li>
+              <li><strong class="m">100,000+</strong> patient records synchronised across <strong class="m">3</strong> portals</li>
+              <li>Led to my promotion to Associate Team Lead</li></ul></div>
+          </div>
+          <div class="proj-foot"><ul class="tags" style="margin:0"><li>ASP.NET Core</li><li>React</li><li>HL7</li><li>HIPAA</li><li>Azure Cognitive Services</li><li>LUIS</li></ul></div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="proj">
+          <div class="proj-head">
+            <div>
+              <span class="eyebrow">2019 – 2023 · QSS Technosoft</span>
+              <h3>API platform re-architecture</h3>
+              <p class="sub">Moving a growing platform to a scalable, API-centric infrastructure</p>
+            </div>
+            <div class="proj-links">
+              <!-- TODO: add a write-up link or remove -->
+              <a class="btn" href="#" data-placeholder="writeup">Write-up</a>
+            </div>
+          </div>
+          <div class="star">
+            <div><h4><b>S</b>Situation</h4><p>As usage grew, the platform's hosting bill and response times were climbing together.</p></div>
+            <div><h4><b>T</b>Task</h4><p>Rework the backend so it scaled with load while costing less to run and responding faster.</p></div>
+            <div><h4><b>A</b>Action</h4><ul>
+              <li>Restructured services around clean RESTful APIs on .NET Core</li>
+              <li>Built reusable components shared across projects</li>
+              <li>Mentored junior developers through code reviews during the rollout</li></ul></div>
+            <div><h4><b>R</b>Result</h4><ul>
+              <li><strong class="m">30%</strong> lower server costs</li>
+              <li><strong class="m">50%</strong> faster application response time across the platform</li></ul></div>
+          </div>
+          <div class="proj-foot"><ul class="tags" style="margin:0"><li>.NET Core</li><li>REST</li><li>Azure</li><li>SQL Server</li></ul></div>
+        </article>
+      </div>
+
+      <div class="more">
+        <div class="mini"><span class="eyebrow">E-commerce</span><h3>Iris optical store</h3><p>Brought an ASP.NET Core Web API into a legacy store, reached SOC2 compliance, and lifted conversion by <strong class="m">15%</strong> through a reworked checkout.</p></div>
+        <div class="mini"><span class="eyebrow">Retail inspection</span><h3>Costco remote inspection</h3><p>Live-video product inspections that replaced site visits, saving <strong class="m">25+ hours</strong> every week.</p></div>
+        <div class="mini"><span class="eyebrow">Audit</span><h3>Factory Assessment</h3><p>Self-assessment and third-party review platform that cut audit time by <strong class="m">30%</strong> across <strong class="m">35+</strong> factories.</p></div>
+      </div>
+
+      <div class="repos">
+        <div class="repos-head"><strong>Open source</strong><span>github.com/masoodibraheem31</span></div>
+        <a class="repo" href="https://github.com/masoodibraheem31/EventDriverEcommerce" target="_blank" rel="noopener"><b>EventDriverEcommerce</b><small>C# · .NET</small><p>Event-driven e-commerce demo with an in-memory event bus for orders, inventory, payments and notifications.</p></a>
+        <a class="repo" href="https://github.com/masoodibraheem31/AiNewsSummarizer" target="_blank" rel="noopener"><b>AiNewsSummarizer</b><small>C# · .NET 9</small><p>Web API that scrapes a news article and returns a three-point summary through the OpenAI API.</p></a>
+        <a class="repo" href="https://github.com/masoodibraheem31/ImageResizer" target="_blank" rel="noopener"><b>ImageResizer</b><small>C# · .NET 8</small><p>Resizes and compresses uploads to fit strict limits (≤100 KB) for government portals, using ImageSharp.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Experience</span><h2>Where I've worked</h2></div>
+      <div class="timeline">
+        <div class="job cur"><div class="job-top"><h3>Associate Team Lead <span>· Mindfire Solutions</span></h3><time>Apr 2026 – Present</time></div><p>Leading a .NET/Azure team; authored the AI-Assisted Development Policy; running the 15-module AI engineering curriculum.</p></div>
+        <div class="job"><div class="job-top"><h3>Senior Software Engineer <span>· Mindfire Solutions</span></h3><time>Jan 2023 – Apr 2026</time></div><p>Integrated three healthcare portals with Invaryant under HIPAA; architected role-based auth and HL7 data flows for a US EHR platform.</p></div>
+        <div class="job"><div class="job-top"><h3>Senior Software Engineer <span>· QSS Technosoft</span></h3><time>Nov 2019 – Jan 2023</time></div><p>Architected Invaryant; re-built the API layer for 30% lower server cost and 50% faster responses.</p></div>
+        <div class="job"><div class="job-top"><h3>Web Application Developer <span>· Codemites</span></h3><time>Aug 2018 – Aug 2019</time></div><p>Client web applications in ASP.NET MVC and React.</p></div>
+        <div class="job" style="padding-bottom:0"><div class="job-top"><h3>Web Application Developer <span>· Interface Technologies</span></h3><time>Mar 2015 – May 2016</time></div><p>Web applications on the ASP.NET MVC framework.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Writing</span><h2>Notes for .NET engineers</h2><p>I write on LinkedIn for 2,000+ followers about .NET performance and engineering with AI.</p></div>
+      <div class="posts">
+        <!-- TODO: replace each href with the direct post URL -->
+        <a class="post" href="https://www.linkedin.com/in/masruh31/recent-activity/all/" target="_blank" rel="noopener"><div style="display:grid;gap:10px"><h3>.NET 8's hidden gem: FrozenCollections</h3><p>Load reference data once, freeze it, and get fast, thread-safe, read-only lookups.</p></div><span class="reach">50,500+ impressions · 397 reactions</span></a>
+        <a class="post" href="https://www.linkedin.com/in/masruh31/recent-activity/all/" target="_blank" rel="noopener"><div style="display:grid;gap:10px"><h3>The most dangerous code on your team now looks perfect</h3><p>Why reviewers should ask "how do we know this is right?" once AI writes the diff.</p></div><span class="reach">18,500+ impressions</span></a>
+        <a class="post" href="https://www.linkedin.com/in/masruh31/recent-activity/all/" target="_blank" rel="noopener"><div style="display:grid;gap:10px"><h3>.NET 11's StringStream saves memory for free</h3><p>Stop copying every JSON payload just to hand an API a Stream.</p></div><span class="reach">Oct 2026</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="wrap creds">
+      <div><span class="eyebrow">Certifications</span>
+        <ul>
+          <li>Microsoft Certified: Azure Developer Associate (AZ-204)<span>2023</span></li>
+          <li>Microsoft Certified: Azure Fundamentals<span>2022</span></li>
+          <li>SWEBOK Program, IEEE Computer Society<span>2015</span></li>
+        </ul></div>
+      <div><span class="eyebrow">Education</span>
+        <ul>
+          <li>Master's, Information Technology · University of Kashmir<span>2018</span></li>
+          <li>Bachelor's, Information Technology · Sri Pratap College<span>2015</span></li>
+        </ul></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Let's build something that holds up.</h2>
+        <p>I'm open to Team Lead, Solutions Architect and Software Architect roles, and to conversations about rolling out AI-assisted engineering safely. Email is the fastest way to reach me.</p>
+      </div>
+      <div class="channels">
+        <div class="ch"><div class="l"><small>Email</small><b id="email">masoodahmad782@gmail.com</b></div><button type="button" id="copyEmail">Copy</button></div>
+        <a class="ch" href="https://www.linkedin.com/in/masruh31/" target="_blank" rel="noopener"><div class="l"><small>LinkedIn</small><b>linkedin.com/in/masruh31</b></div><span aria-hidden="true">↗</span></a>
+        <a class="ch" href="https://github.com/masoodibraheem31" target="_blank" rel="noopener"><div class="l"><small>GitHub</small><b>github.com/masoodibraheem31</b></div><span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Masood Bhat · Srinagar, Kashmir</span><span>Built with .NET habits: small, tested, shipped.</span></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeToggle');
+  try{var saved=localStorage.getItem('mb-theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('mb-theme',next);}catch(e){}
+  });
+  var cb=document.getElementById('copyEmail'), em=document.getElementById('email');
+  cb.addEventListener('click',function(){
+    var done=function(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(em.textContent).then(done,sel);}else sel();
+  });
+  document.querySelectorAll('[data-placeholder]').forEach(function(a){
+    a.addEventListener('click',function(e){if(a.getAttribute('href')==='#'){e.preventDefault();a.textContent=a.textContent.replace(/ \(link coming soon\)$/,'')+' (link coming soon)';}});
+  });
+})();
+</script>
+
+</body>
+</html>
