@@ -477,6 +477,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       </div>
       <div class="channels">
         <div class="ch"><div class="l"><small>Email</small><b id="email">masoodahmad782@gmail.com</b></div><button type="button" id="copyEmail">Copy</button></div>
+        <div class="ch"><div class="l"><small>Phone</small><b id="phone"><a href="tel:+919596578282" style="text-decoration:none">+91-9596578282</a></b></div><button type="button" id="copyPhone">Copy</button></div>
         <a class="ch" href="https://www.linkedin.com/in/masruh31/" target="_blank" rel="noopener"><div class="l"><small>LinkedIn</small><b>linkedin.com/in/masruh31</b></div><span aria-hidden="true">↗</span></a>
         <a class="ch" href="https://github.com/masoodibraheem31" target="_blank" rel="noopener"><div class="l"><small>GitHub</small><b>github.com/masoodibraheem31</b></div><span aria-hidden="true">↗</span></a>
       </div>
@@ -501,6 +502,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     var done=function(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy'},1600)};
     var sel=function(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected';};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(em.textContent).then(done,sel);}else sel();
+  });
+  var cp=document.getElementById('copyPhone');
+  cp.addEventListener('click',function(){
+    var t='+91-9596578282';var ok=function(){cp.textContent='Copied';setTimeout(function(){cp.textContent='Copy'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('phone'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='Selected';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,sel);}else sel();
   });
   document.querySelectorAll('[data-placeholder]').forEach(function(a){
     a.addEventListener('click',function(e){if(a.getAttribute('href')==='#'){e.preventDefault();a.textContent=a.textContent.replace(/ \(link coming soon\)$/,'')+' (link coming soon)';}});
